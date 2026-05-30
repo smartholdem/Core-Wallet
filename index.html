@@ -2,17 +2,138 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>SmartHoldem Wallet · ANVIL Edition</title>
+
+    <!-- Standard favicon + web manifest (PWA target) -->
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmartHoldem Wallet: Forge Edition</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#E25822" />
+    <meta
+      name="description"
+      content="An industrial-grade crypto wallet for SmartHoldem (STH). Built for games, payments, and pure on-chain sovereignty."
+    />
+
+    <!--
+      ============================================================
+      Apple iOS / Safari "Add to Home Screen" web-app metadata.
+
+      Safari does not implement the web-manifest's `display: standalone`
+      directly — these legacy `apple-mobile-web-app-*` meta tags are still
+      the only way to make the wallet launch full-screen from the iOS
+      home screen.
+
+      * `apple-mobile-web-app-capable: yes` — hide Safari chrome
+      * `apple-mobile-web-app-status-bar-style: black-translucent` — let
+        the wallet's gunmetal background paint under the status bar
+      * `apple-mobile-web-app-title: ANVIL` — short label under the icon
+      * `apple-touch-icon` — 180x180 icon Apple actually renders (we feed
+        the 192px variant which gets downsized by the OS)
+      ============================================================
+    -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ANVIL" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Mobile-Chrome / older Android equivalent -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="ANVIL" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!--
+      ============================================================
+      ANVIL boot splash — inline CSS so it paints on first frame,
+      before any JS, Vue, or Pinia hydration. Matches the brutalist
+      gunmetal palette so the transition into the live UI is seamless
+      across all three themes (rust / cyan / light — the dark backdrop
+      matches all three's loading state, with the rust accent serving as
+      a brand signature). Removed by main.ts after `app.mount('#app')`.
+      ============================================================
+    -->
+    <style id="anvil-boot-css">
+      #anvil-boot-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #121315;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+        color: #e25822;
+        overflow: hidden;
+      }
+      .boot-terminal-box {
+        border: 1px dashed #374151;
+        padding: 16px;
+        background-color: #1a1c1e;
+        width: 280px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      }
+      .boot-title {
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .boot-status {
+        font-size: 10px;
+        color: #9ca3af;
+        display: flex;
+        justify-content: space-between;
+        letter-spacing: 0.06em;
+      }
+      .boot-progress-bar {
+        height: 3px;
+        background-color: #374151;
+        margin-top: 12px;
+        position: relative;
+        overflow: hidden;
+      }
+      .boot-progress-bar::after {
+        content: "";
+        position: absolute;
+        left: -50%;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background: linear-gradient(90deg, transparent, #e25822, transparent);
+        animation: hammer-scan 1.5s infinite linear;
+      }
+      @keyframes hammer-scan {
+        0% {
+          left: -50%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    </style>
   </head>
   <body class="preview-shell">
+    <!-- Splash mounts pre-Vue and is yanked from the DOM by main.ts. -->
+    <div id="anvil-boot-container" aria-hidden="true">
+      <div class="boot-terminal-box">
+        <div class="boot-title">▲ ANVIL CORE</div>
+        <div class="boot-status">
+          <span>INITIALIZING SECURE VAULT...</span>
+        </div>
+        <div class="boot-progress-bar"></div>
+      </div>
+    </div>
+
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
