@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>SmartHoldem Wallet · ANVIL Edition</title>
+    <title>SmartHoldem Wallet · Optimus Edition</title>
 
     <!-- Standard favicon + web manifest (PWA target) -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -26,19 +26,19 @@
       * `apple-mobile-web-app-capable: yes` — hide Safari chrome
       * `apple-mobile-web-app-status-bar-style: black-translucent` — let
         the wallet's gunmetal background paint under the status bar
-      * `apple-mobile-web-app-title: ANVIL` — short label under the icon
+      * `apple-mobile-web-app-title: Optimus` — short label under the icon
       * `apple-touch-icon` — 180x180 icon Apple actually renders (we feed
         the 192px variant which gets downsized by the OS)
       ============================================================
     -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="ANVIL" />
+    <meta name="apple-mobile-web-app-title" content="Optimus" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 
     <!-- Mobile-Chrome / older Android equivalent -->
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="application-name" content="ANVIL" />
+    <meta name="application-name" content="Optimus" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +49,7 @@
 
     <!--
       ============================================================
-      ANVIL boot splash — inline CSS so it paints on first frame,
+      Optimus boot splash — inline CSS so it paints on first frame,
       before any JS, Vue, or Pinia hydration. Matches the brutalist
       gunmetal palette so the transition into the live UI is seamless
       across all three themes (rust / cyan / light — the dark backdrop
@@ -57,8 +57,8 @@
       a brand signature). Removed by main.ts after `app.mount('#app')`.
       ============================================================
     -->
-    <style id="anvil-boot-css">
-      #anvil-boot-container {
+    <style id="Optimus-boot-css">
+      #Optimus-boot-container {
         position: fixed;
         top: 0;
         left: 0;
@@ -124,9 +124,9 @@
   </head>
   <body class="preview-shell">
     <!-- Splash mounts pre-Vue and is yanked from the DOM by main.ts. -->
-    <div id="anvil-boot-container" aria-hidden="true">
+    <div id="Optimus-boot-container" aria-hidden="true">
       <div class="boot-terminal-box">
-        <div class="boot-title">▲ ANVIL CORE</div>
+        <div class="boot-title">▲ Optimus CORE</div>
         <div class="boot-status">
           <span>INITIALIZING SECURE VAULT...</span>
         </div>

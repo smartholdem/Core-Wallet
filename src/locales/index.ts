@@ -164,9 +164,9 @@ const en: Dict = {
   "set.themeCyan": "Cyan Steel",
   "set.themeLight": "Industrial Light",
   "set.themeRustDesc": "SmartHoldem native - burned amber on gunmetal.",
-  "set.themeCyanDesc": "Legacy anvil - anodized indigo + volt cyan.",
+  "set.themeCyanDesc": "Legacy Optimus - anodized indigo + volt cyan.",
   "set.themeLightDesc":
-    "Raw machined aluminum - tactical light anvil with deep amber accents.",
+    "Raw machined aluminum - tactical light Optimus with deep amber accents.",
   "set.language": "Internationalization · Language",
   "set.languageDesc": "Switch interface language instantly. More locales coming.",
   "set.security": "Security",
@@ -366,7 +366,7 @@ const ru: Dict = {
   "set.themeRustDesc":
     "Нативный SmartHoldem - жжёная амбра на оружейной стали.",
   "set.themeCyanDesc":
-    "Legacy anvil - анодированный индиго и вольтовый циан.",
+    "Legacy Optimus - анодированный индиго и вольтовый циан.",
   "set.themeLightDesc":
     "Необработанный алюминий - тактический светлый дизайн с глубокой амброй.",
   "set.language": "Язык интерфейса",

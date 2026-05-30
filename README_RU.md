@@ -1,4 +1,4 @@
-# SmartHoldem Wallet - Anvil Edition
+# SmartHoldem Wallet - Optimus Edition
 
 > **Промышленный криптокошелёк для SmartHoldem (STH)** на базе Chrome MV3 Side Panel.  
 > Vite + Vue 3 + Pinia + Tailwind. Логика портирована из официального [wallet-pro](https://github.com/smartholdem/wallet-pro).
@@ -31,7 +31,7 @@
 - QR-код адреса (cyan corner markers, JetBrains Mono).
 - Tap-to-Copy с уведомлением «Address Secured».
 
-### 1.5. Swap Hub (Exchange · Anvil)
+### 1.5. Swap Hub (Exchange · Optimus)
 - Две вкладки **Buy STH / Sell STH** под точную копию `ExchangeModal.vue` из wallet-pro.
 - **Buy STH**:
   - Пользователь указывает желаемое количество STH.
@@ -564,7 +564,7 @@ yarn build:extension
 ## 4. Почему этот кошелёк - лучший в экосистеме SmartHoldem
 
 1. **Индустриальный дизайн**. Никакого «AI-slop» - Gunmetal #121315, Rust Orange #E25822, Volt Cyan #06B6D4, JetBrains Mono для адресов и балансов. Две темы переключаются мгновенно через CSS-переменные.
-2. **Side Panel-first**. В отличие от обычных popup-кошельков, Anvil живёт в боковой панели и не сбрасывает state при переключении вкладок - критично для покер-комнат и dApp-сессий.
+2. **Side Panel-first**. В отличие от обычных popup-кошельков, Optimus живёт в боковой панели и не сбрасывает state при переключении вкладок - критично для покер-комнат и dApp-сессий.
 3. **Полная совместимость с wallet-pro**. Та же криптография, тот же formats, та же логика swap-гейтов - мигрируете с любого устройства без потери адресов.
 4. **HD-мультиаккаунты + кастомные метки**. Один seed → бесконечно адресов; назовите их «Poker Bankroll», «Cold Storage», «Daily Spend» - метки сохраняются в зашифрованном бэкапе.
 5. **Нативный SWAP внутри кошелька**. Не нужно открывать сторонний сайт - Buy/Sell с per-account BEP20-депозитом, slippage-расчётами, polling-ом подтверждения.
