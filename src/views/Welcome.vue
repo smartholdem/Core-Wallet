@@ -105,7 +105,7 @@ async function onPinComplete(v: string) {
           <span class="text-[10px] uppercase tracking-[0.3em] text-fiatDim">
             SmartHoldem
           </span>
-          <span class="text-sm font-semibold text-bone mt-1">Oxid · Forge Edition</span>
+          <span class="text-sm font-semibold text-bone mt-1">Anvil · Edition</span>
         </div>
       </div>
     </div>
@@ -119,8 +119,8 @@ async function onPinComplete(v: string) {
         <span class="mono text-cyan-voltGlow">crypto.</span>
       </h1>
       <p class="mt-4 text-sm text-fiat leading-relaxed max-w-[290px]">
-        A brutalist STH wallet for poker, payments, and pure on-chain sovereignty.
-        Every signature is forged locally — your keys never leave the lockbox.
+        A SmartHoldem [STH] wallet for games, payments, and pure on-chain sovereignty.
+        Every signature is saved locally — your keys never leave the lockbox.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-1.5">
@@ -143,7 +143,7 @@ async function onPinComplete(v: string) {
         data-testid="create-wallet-btn"
       >
         <span class="mono text-base">+</span>
-        Forge a new wallet
+        Create a new wallet
       </button>
       <button
         @click="router.push('/import')"
@@ -172,7 +172,7 @@ async function onPinComplete(v: string) {
         @change="onFileChange"
         data-testid="welcome-vault-file-input"
       />
-      <p class="text-[10px] uppercase tracking-[0.18em] text-fiatDim text-center mt-2">
+      <p class="text-[10px] uppercase tracking-[0.18em] text-fiatDim text-center mt-2 text-green-800">
         {{ t('welcome.version') }}
       </p>
     </div>

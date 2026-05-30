@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "SmartHoldem Wallet - Forge Edition",
+  "name": "SmartHoldem Wallet - Anvil Edition",
   "short_name": "SmartHoldem",
   "version": "1.4.6",
   "description": "Industrial-grade SmartHoldem (STH) wallet for Browsers. Send, receive, swap and sign.",
