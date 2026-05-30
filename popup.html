@@ -48,6 +48,76 @@
       }
     </style>
 
+    <!--
+      ANVIL boot splash (extension popup / side panel). Identical to the
+      PWA `index.html` splash — see that file for full design rationale.
+      Removed by `src/main.ts` immediately after Vue mounts.
+    -->
+    <style id="anvil-boot-css">
+      #anvil-boot-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #121315;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+        color: #e25822;
+        overflow: hidden;
+      }
+      .boot-terminal-box {
+        border: 1px dashed #374151;
+        padding: 16px;
+        background-color: #1a1c1e;
+        width: 280px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      }
+      .boot-title {
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .boot-status {
+        font-size: 10px;
+        color: #9ca3af;
+        display: flex;
+        justify-content: space-between;
+        letter-spacing: 0.06em;
+      }
+      .boot-progress-bar {
+        height: 3px;
+        background-color: #374151;
+        margin-top: 12px;
+        position: relative;
+        overflow: hidden;
+      }
+      .boot-progress-bar::after {
+        content: "";
+        position: absolute;
+        left: -50%;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background: linear-gradient(90deg, transparent, #e25822, transparent);
+        animation: hammer-scan 1.5s infinite linear;
+      }
+      @keyframes hammer-scan {
+        0% {
+          left: -50%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    </style>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -56,6 +126,17 @@
     />
   </head>
   <body class="extension-shell">
+    <!-- Splash mounts pre-Vue and is yanked from the DOM by main.ts. -->
+    <div id="anvil-boot-container" aria-hidden="true">
+      <div class="boot-terminal-box">
+        <div class="boot-title">▲ ANVIL CORE</div>
+        <div class="boot-status">
+          <span>INITIALIZING SECURE VAULT...</span>
+        </div>
+        <div class="boot-progress-bar"></div>
+      </div>
+    </div>
+
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

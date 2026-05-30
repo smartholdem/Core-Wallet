@@ -6,6 +6,7 @@ import App from "./App.vue";
 import { router } from "./router";
 import { useIntentStore } from "@/stores/intent";
 import { useAuthStore } from "@/stores/auth";
+import { isExtension, isStandalonePWA, surfaceLabel } from "@/lib/runtime";
 import "./style.css";
 
 const pinia = createPinia();
@@ -15,6 +16,26 @@ const app = createApp(App);
 app.use(pinia);
 app.use(router);
 app.mount("#app");
+
+/**
+ * Dismiss the inline ANVIL boot splash (defined in index.html / popup.html).
+ *
+ * Why `requestAnimationFrame` instead of dismissing immediately after
+ * `mount()`: Vue's `mount()` synchronously creates the component tree but
+ * the browser hasn't painted yet — yanking the splash on the same tick
+ * produces a ~30 ms gap of empty `<div id="app">` before Vue's first
+ * paint, which defeats the whole point of the splash. Waiting for the
+ * next animation frame guarantees Vue has rendered to the framebuffer.
+ */
+function dismissBootSplash() {
+  if (typeof document === "undefined") return;
+  const el = document.getElementById("anvil-boot-container");
+  if (!el) return;
+  el.style.transition = "opacity 0.2s ease-out";
+  el.style.opacity = "0";
+  setTimeout(() => el.remove(), 220);
+}
+requestAnimationFrame(dismissBootSplash);
 
 /**
  * Cross-context bridge wiring:
@@ -66,8 +87,10 @@ function applyIntent(method: string, params: any) {
   }
 }
 
-// Background-driven intents (real extension runtime).
-if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.onMessage) {
+// Background-driven intents (only meaningful inside the extension surface).
+// PWA / web tab contexts have no `chrome.runtime` — we skip the listener
+// entirely instead of relying on the dApp bridge.
+if (isExtension() && chrome.runtime?.onMessage) {
   chrome.runtime.onMessage.addListener((msg) => {
     if (msg?.type !== "smartholdem:dispatch") return;
     const { id, method, params, origin } = msg.payload || {};
@@ -77,17 +100,26 @@ if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.onMessage)
   });
 }
 
-// Whitelist fast-path enabler: keep the active address mirrored to
-// `chrome.storage.local.sthActiveAddress` so the background worker can
-// resolve `getAccount` for trusted dApps without waking the UI.
-// Also expose `lastUnlockedAt` for future session-bound policies.
-if (typeof chrome !== "undefined" && chrome.storage?.local) {
+// Whitelist fast-path enabler — only relevant inside an extension where
+// chrome.storage.local actually exists and the background SW reads it.
+if (isExtension() && chrome.storage?.local) {
   watchEffect(() => {
     const addr = auth.address;
     if (typeof addr === "string" && addr.length > 0) {
       chrome.storage.local.set({ sthActiveAddress: addr });
     }
   });
+}
+
+// Standalone PWA detection — log the surface once so dApp authors and
+// support staff can confirm which runtime is active in console.
+if (typeof window !== "undefined") {
+  // eslint-disable-next-line no-console
+  console.log(
+    `[SmartHoldem Wallet] surface=${surfaceLabel()}`,
+    isStandalonePWA() ? "(installed as PWA)" : "",
+  );
+  document.documentElement.setAttribute("data-surface", surfaceLabel());
 }
 
 // Dev-mode simulators — trigger from the browser console.
@@ -103,5 +135,5 @@ if (typeof chrome !== "undefined" && chrome.storage?.local) {
 (window as any).__sthDevConnect = (params: any) =>
   applyIntent("getAccount", {
     __id: Date.now(),
-    origin: params?.origin ?? "https://example.com",
+    origin: params?.origin ?? "https://playpoker.pro",
   });
