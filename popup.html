@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartHoldem Wallet</title>
+
+    <!--
+      Firefox-specific sizing rules.
+
+      Both Firefox surfaces (popup and sidebar) load this same popup.html,
+      but they have very different sizing behaviour:
+
+        - **Popup** auto-sizes its window to fit <html>'s rendered size.
+          Without a hint it collapses to 5 px height (we used to ship a
+          fixed `width:480px; height:600px` to fix that).
+        - **Sidebar** is user-resizable — width is whatever the user
+          dragged the panel to (200-1500+ px). A FIXED width here means
+          the wallet renders at 480 px while the sidebar might be 1000 px,
+          leaving dead space and making buttons look "cut off" relative to
+          the surrounding chrome.
+
+      Solution — `min-*` only, no fixed `width`/`height`:
+
+        - Popup  : Firefox picks the content's intrinsic size, clamped to
+                   our min (480 × 600). Result is a clean 480×600 popup.
+        - Sidebar: content fills whatever width the user gave the panel.
+                   `max-width: 720px` + `margin:0 auto` cap the wallet at
+                   720 px and centre it inside ultra-wide sidebars, so the
+                   brutalist layout doesn't sprawl on a 4K monitor.
+
+      Chrome side panel (which never matches `@-moz-document url-prefix()`)
+      is unaffected — it continues to flow freely inside its iframe.
+    -->
+    <style id="fx-popup-sizing">
+      @-moz-document url-prefix() {
+        html {
+          min-width: 480px;
+          min-height: 600px;
+        }
+        body {
+          min-width: 480px;
+          min-height: 600px;
+          max-width: 720px;
+          margin: 0 auto;
+          overflow: hidden;
+        }
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="extension-shell">
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

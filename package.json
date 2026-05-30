@@ -1,0 +1,52 @@
+{
+  "name": "smartholdem-forge-wallet",
+  "version": "1.4.6",
+  "description": "SmartHoldem (STH) Browser Extension Wallet - Forge Edition",
+  "type": "module",
+  "scripts": {
+    "start": "vite --host 0.0.0.0 --port 3000",
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "vue-tsc --noEmit && vite build",
+    "build:extension": "vue-tsc --noEmit && vite build -c vite.config.extension.ts && node scripts/check-csp.mjs && node scripts/pack-crx.mjs",
+    "build:firefox": "vue-tsc --noEmit && node scripts/build-firefox.mjs",
+    "check:csp": "node scripts/check-csp.mjs",
+    "pack:crx": "node scripts/pack-crx.mjs",
+    "preview": "vite preview --host 0.0.0.0 --port 3000"
+  },
+  "dependencies": {
+    "@scure/bip32": "^2.2.0",
+    "@smartholdem/client": "^2.0.0",
+    "@smartholdem/crypto": "^3.8.3",
+    "axios": "^1.16.1",
+    "bip39": "^3.1.0",
+    "buffer": "^6.0.3",
+    "crypto-js": "^4.2.0",
+    "events": "^3.3.0",
+    "pinia": "^2.2.4",
+    "pinia-plugin-persistedstate": "^4.1.2",
+    "process": "^0.11.10",
+    "qrcode": "^1.5.4",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@types/chrome": "^0.0.279",
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^22.9.0",
+    "@types/qrcode": "^1.5.5",
+    "@vitejs/plugin-vue": "^5.1.5",
+    "archiver": "^8.0.0",
+    "autoprefixer": "^10.4.20",
+    "crx": "^5.0.1",
+    "postcss": "^8.4.49",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-plugin-static-copy": "^2.1.0",
+    "vue-tsc": "^2.1.10"
+  }
+}
