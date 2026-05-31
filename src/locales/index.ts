@@ -1,5 +1,5 @@
 /**
- * Multi-language dictionary for SmartHoldem Oxid.
+ * Multi-language dictionary for SmartHoldem Prime.
  *
  * Add new locales by extending the `Locale` union and providing a full
  * dictionary keyed identically to `en`. Missing keys at runtime fall back

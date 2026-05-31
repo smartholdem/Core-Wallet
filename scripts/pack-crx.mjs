@@ -5,7 +5,7 @@
  * - Generates a stable RSA private key at `apps/extension/key.pem` on first run.
  *   The same key is reused on subsequent builds so the extension ID stays
  *   consistent across releases (critical for chrome.runtime ID identity).
- * - Writes the archive to `apps/extension/sth-oxid-<version>.crx` and prints
+ * - Writes the archive to `apps/extension/prime-wallet-<version>.crx` and prints
  *   the SHA-256 of both the crx and the embedded ZIP for auditability.
  */
 import { execSync } from "node:child_process";
@@ -22,7 +22,7 @@ const VERSION = PKG.version || "1.0.0";
 
 const EXT_DIR = resolve(ROOT, "apps/extension/dist");
 const KEY_PATH = resolve(ROOT, "apps/extension/key.pem");
-const OUT_PATH = resolve(ROOT, `apps/extension/sth-oxid-${VERSION}.crx`);
+const OUT_PATH = resolve(ROOT, `apps/extension/prime-wallet-${VERSION}.crx`);
 
 if (!existsSync(EXT_DIR)) {
   console.error(`✗ ${EXT_DIR} not found. Run \`yarn build:extension\` first.`);
@@ -35,7 +35,7 @@ if (!existsSync(KEY_PATH)) {
 }
 
 const crx = new ChromeExtension({
-  codebase: "https://smartholdem.io/oxid.crx",
+  codebase: "https://smartholdem.io/prime-wallet.crx",
   privateKey: readFileSync(KEY_PATH),
 });
 

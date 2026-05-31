@@ -15,7 +15,7 @@
  *        - Inject `sidebar_action.default_panel = "popup.html"`.
  *        - Add `browser_specific_settings.gecko.{id, strict_min_version}`.
  *   4. Zip `dist-firefox/` contents (no parent folder) into
- *      `apps/extension/sth-oxid-firefox-<version>.zip`.
+ *      `apps/extension/prime-wallet-firefox-<version>.zip`.
  *   5. Print final artefact path, size, sha256, and version.
  *
  * The Chromium `apps/extension/dist/` and `.crx` artefacts are NEVER touched
@@ -58,7 +58,7 @@ const OUT_DIR = resolve(ROOT, "apps/extension/dist-firefox");
 const SRC_MANIFEST = resolve(ROOT, "manifest.json");
 const ZIP_PATH = resolve(
   ROOT,
-  `apps/extension/sth-oxid-firefox-${VERSION}.zip`,
+  `apps/extension/prime-wallet-firefox-${VERSION}.zip`,
 );
 
 // ── 1. Vite build into dist-firefox ────────────────────────────────────────
