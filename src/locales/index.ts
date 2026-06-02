@@ -25,7 +25,7 @@ const en: Dict = {
   "brand.tagline.2": "for hot",
   "brand.tagline.3": "crypto.",
   "brand.subtitle":
-    "A brutalist STH wallet for poker, payments, and pure on-chain sovereignty. Every signature is saved locally - your keys never leave the lockbox.",
+    "A brutalist STH wallet for games, payments, and pure on-chain sovereignty. Every signature is saved locally - your keys never leave the lockbox.",
 
   // Welcome
   "welcome.create": "Create a new wallet",

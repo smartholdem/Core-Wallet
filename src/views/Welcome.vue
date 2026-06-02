@@ -120,7 +120,7 @@ async function onPinComplete(v: string) {
       </h1>
       <p class="mt-4 text-sm text-fiat leading-relaxed max-w-[290px]">
         A SmartHoldem [STH] wallet for games, payments, and pure on-chain sovereignty.
-        Every signature is saved locally — your keys never leave the lockbox.
+        Every signature is saved locally - your keys never leave the lockbox.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-1.5">
