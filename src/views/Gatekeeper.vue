@@ -69,7 +69,7 @@ const bullets = [
       <LanguageDropdown />
     </div>
 
-    <p class="relative text-xs text-fiat mt-3 leading-relaxed">
+    <p class="relative text-xs text-fiat mt-20 leading-relaxed">
       {{ t("lock.intro") }}
     </p>
 

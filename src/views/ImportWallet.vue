@@ -72,7 +72,7 @@ function onPinComplete(v: string) {
 
     <template v-if="step === 1">
       <h2 class="text-xl font-semibold text-bone leading-tight">Restore wallet</h2>
-      <p class="text-xs text-gunmetal-300 mt-1.5">
+      <p class="text-xs text-indigo-forgeBright mt-1.5">
         Paste your 12/24-word seed phrase or a SmartHoldem private key.
       </p>
 
@@ -99,19 +99,44 @@ function onPinComplete(v: string) {
     </template>
 
     <template v-else-if="step === 2">
-      <h2 class="text-xl font-semibold text-bone leading-tight">Set a PIN</h2>
-      <p class="text-xs text-gunmetal-300 mt-1.5 mono break-all">{{ address }}</p>
-      <div class="mt-6">
+      <h2 class="text-xl font-semibold text-bone leading-tight">Set a PIN for</h2>
+      <p class="text-xs text-indigo-forgeBright mt-1.5 mono break-all">{{ address }}</p>
+      <div class="flex-1">
+      </div>
+      <div class="mt-1">
+        <div class="content-center">
+          <svg viewBox="0 0 24 24" class="text-indigo-forgeBright" fill="none" stroke="currentColor" stroke-width="1.5" style="width:128px; height:128px;">
+            <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+        </div>
         <PinPad v-model="pin" :length="6" @complete="onPinComplete" />
       </div>
     </template>
 
     <template v-else-if="step === 3">
       <h2 class="text-xl font-semibold text-bone leading-tight">Confirm PIN</h2>
-      <p class="text-xs text-gunmetal-300 mt-1.5 mono break-all">{{ address }}</p>
-      <div class="mt-6">
+      <p class="text-xs text-indigo-forgeBright mt-1.5 mono break-all">{{ address }}</p>
+      <div class="flex-1">
+      </div>
+      <div class="mt-1">
+        <div class="content-center">
+          <svg viewBox="0 0 24 24" class="text-indigo-forgeBright" fill="none" stroke="currentColor" stroke-width="1.5" style="width:128px; height:128px;">
+            <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+        </div>
         <PinPad v-model="pinConfirm" :length="6" :error="pinError" @complete="onPinComplete" />
       </div>
     </template>
   </div>
 </template>
+
+<style>
+  .content-center {
+    display: flex; /* Включаем Flexbox */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали (если нужно) */
+    height: 25vh; /* Высота контейнера (для примера) */
+  }
+</style>
