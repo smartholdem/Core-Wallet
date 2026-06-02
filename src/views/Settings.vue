@@ -649,9 +649,6 @@ onMounted(() => {
         </div>
       </section>
 
-      <p class="text-[10px] text-center text-fiatDim uppercase tracking-[0.24em] mt-2">
-        Oxid · Forge Edition · v1.1.0
-      </p>
     </div>
 
     <BottomDock />

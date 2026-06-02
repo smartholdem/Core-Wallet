@@ -108,6 +108,7 @@ function onPinComplete(v: string) {
 
     <template v-else-if="step === 3">
       <h2 class="text-xl font-semibold text-bone leading-tight">Confirm PIN</h2>
+      <p class="text-xs text-gunmetal-300 mt-1.5 mono break-all">{{ address }}</p>
       <div class="mt-6">
         <PinPad v-model="pinConfirm" :length="6" :error="pinError" @complete="onPinComplete" />
       </div>

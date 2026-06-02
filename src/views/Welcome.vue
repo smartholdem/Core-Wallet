@@ -105,7 +105,7 @@ async function onPinComplete(v: string) {
           <span class="text-[10px] uppercase tracking-[0.3em] text-fiatDim">
             SmartHoldem
           </span>
-          <span class="text-sm font-semibold text-bone mt-1">Anvil · Edition</span>
+          <span class="text-sm font-semibold text-bone mt-1">Prime Wallet · Edition</span>
         </div>
       </div>
     </div>
