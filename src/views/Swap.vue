@@ -135,7 +135,7 @@ function startPolling(txid: string) {
       stopPolling();
       return;
     }
-    if (pollAttempts.value >= 30) stopPolling();
+    if (pollAttempts.value >= 3) stopPolling();
   }, 10_000);
 }
 
@@ -455,7 +455,7 @@ function refreshBuyAddress() {
           data-testid="bridge-polling"
         >
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-voltGlow animate-pulse-glow mr-1.5" />
-          Awaiting bridge confirmation · {{ pollAttempts }}/30
+          Awaiting bridge confirmation · {{ pollAttempts }}/3
         </div>
       </template>
     </div>
