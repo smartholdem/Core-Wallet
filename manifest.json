@@ -3,7 +3,7 @@
   "name": "Prime Wallet",
   "short_name": "Prime Wallet (STH)",
   "version": "1.4.6",
-  "description": "Industrial-grade SmartHoldem (STH) wallet for Chrome. Send, receive, swap and sign.",
+  "description": "Industrial-grade SmartHoldem (STH) wallet. Send, receive, swap and sign.",
   "permissions": ["sidePanel", "storage", "activeTab", "tabs"],
   "action": {
     "default_title": "SmartHoldem Wallet",
@@ -36,6 +36,6 @@
     "128": "icons/icon-128.png"
   },
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://*.smartholdem.io https://exchange.smartholdem.io https://*.sth.cx https://smartholder.xbts.io"
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://*.smartholdem.io https://exchange.smartholdem.io https://*.sth.cx"
   }
 }
