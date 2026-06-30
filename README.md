@@ -14,7 +14,7 @@
 * **Wallet Creation** – Generates a 12-word BIP-39 mnemonic phrase, features a seed-saving screen with mandatory awareness checkboxes, and secures access with a 6-digit PIN.
 * **Seed Restoration** – Allows pasting mnemonics or raw private keys, fully validated via `Identities.Address.validate(addr, 63)`.
 * **Encrypted `.sth` Backup Import** – Directly executable from both the Welcome and Settings screens.
-* **HD Multi-Accounts** – BIP-44 pathing `m/44'/111'/account'/0/0` via `@scure/bip32`. Account #0 provides perfect compatibility with wallet-pro's passphrase-derivation model.
+* **HD Multi-Accounts** – BIP-44 pathing `m/44'/255'/account'/0/0` via `@scure/bip32`. Account #0 provides perfect compatibility with wallet-pro's passphrase-derivation model.
 * **Account Switcher** (`AccountSwitcher`) – Displays real-time balances, includes rapid address copying, and supports inline renaming (e.g., "Account 2" → "Poker Bankroll").
 * **PIN Lockbox** (Gatekeeper) – Styled with custom dot indicators, a Scan-line animation grid, and a brutalist numeric keypad overlay.
 
