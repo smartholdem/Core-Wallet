@@ -120,12 +120,13 @@ async function openWalletSurface(tab: any) {
 
 HOST.action?.onClicked?.addListener((tab: any) => openWalletSurface(tab));
 
-if (IS_FIREFOX && browser.browserAction?.onClicked) {
-  // Firefox: only `browserAction.onClicked` fires reliably for sidebar toggles.
-  browser.browserAction.onClicked.addListener((tab: any) =>
-    openWalletSurface(tab),
-  );
-}
+// NOTE: `browser.browserAction.onClicked` is intentionally NOT registered.
+// In Manifest V3 the API was removed by Mozilla (replaced by `browser.action`,
+// already handled by the listener above which polls the `chrome.*` / `browser.*`
+// namespace). Registering both raises AMO's "browserAction.onClicked has been
+// removed in MV3" warning at submission time. For Firefox we rely on
+// `action.default_popup` in the manifest, which makes the toolbar icon
+// auto-open the popup without any JS listener needed.
 
 async function openWalletForCurrent() {
   try {
