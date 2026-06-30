@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "SmartHoldem Wallet (STH)",
   "short_name": "SmartHoldem Wallet",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "Decentralized ecosystem wallet for SmartHoldem blockchain.",
   "permissions": ["sidePanel", "storage", "activeTab", "tabs"],
   "action": {

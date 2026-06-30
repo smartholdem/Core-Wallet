@@ -31,7 +31,7 @@ const en: Dict = {
   "welcome.create": "Create a new wallet",
   "welcome.restore_seed": "Restore from seed",
   "welcome.import_vault": "Import encrypted .sth vault",
-  "welcome.version": "v1.4.6 · Mainnet ready",
+  "welcome.version": "v1.4.7 · Mainnet ready",
 
   // Gatekeeper / PIN
   "lock.title": "LOCKBOX",
@@ -241,7 +241,7 @@ const ru: Dict = {
   "welcome.create": "Сковать новый кошелёк",
   "welcome.restore_seed": "Восстановить из seed",
   "welcome.import_vault": "Импорт зашифрованного .sth-бэкапа",
-  "welcome.version": "v1.4.6 · Mainnet готов",
+  "welcome.version": "v1.4.7 · Mainnet готов",
 
   "lock.title": "ЛОКБОКС",
   "lock.subtitle": "Введите PIN, чтобы выковать",
@@ -439,7 +439,7 @@ const zh: Dict = {
   "welcome.create": "铸造新钱包",
   "welcome.restore_seed": "从助记词恢复",
   "welcome.import_vault": "导入加密的 .sth 保险库",
-  "welcome.version": "v1.4.6 · 主网就绪",
+  "welcome.version": "v1.4.7 · 主网就绪",
 
   "lock.title": "保险箱",
   "lock.subtitle": "输入 PIN 以铸造",
@@ -629,7 +629,7 @@ const es: Dict = {
   "welcome.create": "Forjar una nueva billetera",
   "welcome.restore_seed": "Restaurar desde semilla",
   "welcome.import_vault": "Importar bóveda cifrada .sth",
-  "welcome.version": "v1.4.6 · Mainnet listo",
+  "welcome.version": "v1.4.7 · Mainnet listo",
 
   "lock.title": "CAJA FUERTE",
   "lock.subtitle": "Ingrese el PIN para forjar",
