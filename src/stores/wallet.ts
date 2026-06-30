@@ -16,9 +16,10 @@ Managers.configManager.setHeight(10000000);
 
 export const STH_NETWORK = 63;
 export const STH_FEE = 0.25;
-// SmartHoldem BIP44 derivation. Note: official SLIP-44 lists 255 for STH but
-// the SmartHoldem team's project spec uses coin_type=111 — honored verbatim.
-const BIP44_COIN_TYPE = 111;
+// SmartHoldem BIP44 derivation. Note: official SLIP-44 lists 255 for STH
+// the SmartHoldem team's project spec uses coin_type=255 — honored verbatim.
+// https://github.com/satoshilabs/slips/blob/master/slip-0044.md
+const BIP44_COIN_TYPE = 255;
 
 interface Tx {
   id: string;
@@ -46,7 +47,7 @@ function deriveAccount(mnemonic: string, index: number) {
     const address = Identities.Address.fromPublicKey(keys.publicKey, STH_NETWORK);
     return { keys, address, privateKey: keys.privateKey, publicKey: keys.publicKey };
   }
-  // Account #N>0 = BIP44 HD derivation m/44'/111'/N'/0/0
+  // Account #N>0 = BIP44 HD derivation m/44'/255'/N'/0/0
   const seed = mnemonicToSeedSync(mnemonic);
   const root = HDKey.fromMasterSeed(new Uint8Array(seed));
   const child = root.derive(`m/44'/${BIP44_COIN_TYPE}'/${index}'/0/0`);
