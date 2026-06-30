@@ -1,6 +1,6 @@
 # SmartHoldem Wallet Core Edition
 
-> **An industrial-grade crypto wallet for SmartHoldem (STH)** powered by Chrome MV3 Side Panel.
+> **An industrial-grade crypto wallet for SmartHoldem (STH)** powered by Mozilla/Chrome MV3 Side Panel.
 > Vite + Vue 3 + Pinia + Tailwind. Core logic is strictly ported from the official [wallet-pro](https://github.com/smartholdem/wallet-pro).
 
 ---

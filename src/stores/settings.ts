@@ -8,8 +8,7 @@ export const DEFAULT_NODES = [
   "node2.smartholdem.io",
   "node3.smartholdem.io",
   "node4.smartholdem.io",
-  "node5.smartholdem.io",
-  "node0.sth.cx",
+  "node5.smartholdem.io"
 ];
 
 interface NodeStatus {

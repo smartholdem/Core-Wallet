@@ -36,6 +36,6 @@
     "128": "icons/icon-128.png"
   },
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://*.smartholdem.io https://exchange.smartholdem.io https://*.sth.cx"
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://*.smartholdem.io https://exchange.smartholdem.io"
   }
 }

@@ -12,7 +12,7 @@ import { useSettingsStore } from "@/stores/settings";
 import { useAuthStore, type AccountMeta } from "@/stores/auth";
 
 Managers.configManager.setFromPreset("mainnet");
-Managers.configManager.setHeight(8000000);
+Managers.configManager.setHeight(10000000);
 
 export const STH_NETWORK = 63;
 export const STH_FEE = 0.25;
