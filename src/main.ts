@@ -41,7 +41,7 @@ requestAnimationFrame(dismissBootSplash);
  * Cross-context bridge wiring:
  *   - In the extension side panel: receive `smartholdem:dispatch` from the
  *     background service worker and translate it into a pending intent
- *     (connect / sign / swap deep-link).
+ *     (connect / sign / sign-message / swap deep-link).
  *   - Mirror the active wallet address to `chrome.storage.local` so the
  *     background SW can serve the `getAccount` whitelist fast-path without
  *     blocking on the UI being open.
@@ -77,6 +77,15 @@ function applyIntent(method: string, params: any) {
         fee: params?.fee,
       },
       broadcast: method === "sendTransaction",
+      origin: params?.origin,
+    });
+  } else if (method === "signMessage") {
+    // Off-chain Schnorr signature over an arbitrary string — the
+    // Login-with-Wallet flow (README §1.8.2). Opens AuthorizeMessage modal;
+    // resolves with { address, publicKey, hash, message, signature }.
+    intent.setSignMessage({
+      id: params?.__id ?? Date.now(),
+      message: typeof params?.message === "string" ? params.message : "",
       origin: params?.origin,
     });
   } else if (method === "getAccount") {
@@ -135,5 +144,12 @@ if (typeof window !== "undefined") {
 (window as any).__sthDevConnect = (params: any) =>
   applyIntent("getAccount", {
     __id: Date.now(),
-    origin: params?.origin ?? "https://playpoker.pro",
+    origin: params?.origin ?? "https://smartholdem.io",
+  });
+
+(window as any).__sthDevSignMessage = (params: any) =>
+  applyIntent("signMessage", {
+    __id: Date.now(),
+    message: params?.message ?? "SmartHoldem DAPP · Login · dev-nonce",
+    origin: params?.origin ?? "https://smartholdem.io",
   });

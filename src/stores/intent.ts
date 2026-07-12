@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 /**
  * Transient cross-screen intents handed in by a dApp (via inject.js → background
- * → side panel). Three categories of pending action:
+ * → side panel). Four categories of pending action:
  *
  *   - `pendingSwap`    : deep-link into the Swap Hub with pre-filled inputs.
  *                        Approval is implicit (the user submits the swap form).
@@ -11,6 +11,9 @@ import { defineStore } from "pinia";
  *                        AuthorizeConnect modal. Approving optionally adds the
  *                        origin to `chrome.storage.local.authorizedOrigins`
  *                        so subsequent calls are silent.
+ *   - `pendingMessage` : `signMessage` — opens AuthorizeMessage modal.
+ *                        Off-chain Schnorr signature over an arbitrary string
+ *                        (Login-with-Wallet flow). No transaction, no fee.
  */
 export interface SwapIntent {
   direction: "STH_TO_USDT" | "USDT_TO_STH";
@@ -47,11 +50,19 @@ export interface PendingConnectRequest {
   createdAt: number;
 }
 
+export interface PendingMessageRequest {
+  id: number | string;
+  message: string;
+  origin?: string;
+  createdAt: number;
+}
+
 export const useIntentStore = defineStore("intent", {
   state: () => ({
     pendingSwap: null as SwapIntent | null,
     pendingSign: null as PendingSignRequest | null,
     pendingConnect: null as PendingConnectRequest | null,
+    pendingMessage: null as PendingMessageRequest | null,
   }),
   actions: {
     setSwap(intent: Omit<SwapIntent, "createdAt">) {
@@ -73,6 +84,12 @@ export const useIntentStore = defineStore("intent", {
     },
     clearConnect() {
       this.pendingConnect = null;
+    },
+    setSignMessage(req: Omit<PendingMessageRequest, "createdAt">) {
+      this.pendingMessage = { ...req, createdAt: Date.now() };
+    },
+    clearSignMessage() {
+      this.pendingMessage = null;
     },
   },
 });

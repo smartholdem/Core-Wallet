@@ -3,6 +3,7 @@ import { RouterView } from "vue-router";
 import ToastHost from "@/components/ToastHost.vue";
 import AuthorizeTx from "@/components/AuthorizeTx.vue";
 import AuthorizeConnect from "@/components/AuthorizeConnect.vue";
+import AuthorizeMessage from "@/components/AuthorizeMessage.vue";
 import { onMounted, onBeforeUnmount, watch, watchEffect } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import { useSettingsStore } from "@/stores/settings";
@@ -74,6 +75,7 @@ watch(
     <ToastHost />
     <AuthorizeTx />
     <AuthorizeConnect />
+    <AuthorizeMessage />
   </div>
 </template>
 
